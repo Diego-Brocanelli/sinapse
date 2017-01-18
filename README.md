@@ -4,13 +4,13 @@ Torne a prescrição do seu prontuário mais inteligente com o Memed Sinapse.
 
 ## Como integrar
 
-1. Escolha um campo de texto (<input>, <textarea> ou <div contenteditable="true">) e adicione a classe "memed-autocomplete".
+1. Escolha um campo de texto (\<input>, \<textarea> ou \<div contenteditable="true">) e adicione a classe "memed-autocomplete".
 
 ```html
 <textarea class="sua-classe outra-classe memed-autocomplete"></textarea>
 ```
 
-2. Adicione o script abaixo ao final do HTML (antes do **</body>**), preenchendo os atributos "data-*" com os dados de seu usuário, eles serão utilizados para uma experiência mais personalizada.
+2. Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário, eles serão utilizados para uma experiência mais personalizada.
 
 ```html
 <script type="text/javascript" src="https://memed.com.br/modulos/plataforma.sinapse/build/sinapse.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
