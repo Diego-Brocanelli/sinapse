@@ -4,13 +4,13 @@ Torne a prescrição do seu prontuário mais inteligente com o Memed Sinapse.
 
 ## Como integrar
 
-1. Escolha um campo de texto (\<input>, \<textarea> ou \<div contenteditable="true">) e adicione a classe "memed-autocomplete".
+- Escolha um campo de texto (\<input>, \<textarea> ou \<div contenteditable="true">) e adicione a classe "memed-autocomplete".
 
 ```html
 <textarea class="sua-classe outra-classe memed-autocomplete"></textarea>
 ```
 
-2. Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário, eles serão utilizados para uma experiência mais personalizada.
+- Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário, eles serão utilizados para uma experiência mais personalizada.
 
 ```html
 <script type="text/javascript" src="https://memed.com.br/modulos/plataforma.sinapse/build/sinapse.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
@@ -39,7 +39,7 @@ MdSinapse.event.add('medicamentoAdicionado', function callback(medicamento) {
 
 Obs: Não possui uma API KEY? Entre em contato com a gente através do e-mail [contato@memed.com.br](mailto:contato@memed.com.br)
 
-3. Quando um usuário salvar uma prescrição em seu prontuário, envie para a Memed, assim o Memed Sinapse ficará mais inteligente para o seu usuário.
+- Quando um usuário salvar uma prescrição em seu prontuário, envie para a Memed, assim o Memed Sinapse ficará mais inteligente para o seu usuário.
 
 O envio da prescrição deve feito através de um **REQUEST HTTP** para a API da Memed, a qual receberá um JSON com os dados da prescrição, conforme a documentação abaixo. Como forma de facilitar a integração, estão disponíveis exemplos em algumas linguagens de programação, assim como a especificação do request usando cURL (que pode ser executada no terminal de comando).
 
