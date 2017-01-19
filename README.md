@@ -1,6 +1,14 @@
 # Memed Sinapse
 
-Torne a prescrição do seu prontuário mais inteligente com o Memed Sinapse.
+Memed Sinapse é um plugin 100% gratuito da Memed que transforma qualquer campo de texto (inputs, textarea e contenteditable) em uma intuitiva ferramenta de suporte a prescrição médica.
+
+Com um simples setup, o médico tem acesso a:
+- Banco de medicamento mais completo e atualizado do Brasil, mais de 20 mil entre composições, apresentações comerciais e fórmulas manipuladas;
+- Classificações farmacológicas de todos os medicamentos;
+- Busca inteligente por princípio ativo, apresentações comerciais, forma física e tipo de medicamento;
+- Memed Síntese, todas as informações de um medicamento;
+- Melhorias e atualizações automáticas;
+
 
 ## Como integrar
 
