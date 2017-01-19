@@ -1,6 +1,6 @@
 # Memed Sinapse
 
-Memed Sinapse é um plugin 100% gratuito da Memed que transforma qualquer campo de texto (inputs, textarea e contenteditable) em uma intuitiva ferramenta de suporte a prescrição médica.
+Memed Sinapse é um plugin 100% gratuito da Memed que transforma qualquer campo de texto (inputs, textarea) em uma intuitiva ferramenta de suporte a prescrição médica.
 
 Com um simples setup, o médico tem acesso a:
 - Banco de medicamento mais completo e atualizado do Brasil, mais de 20 mil entre composições, apresentações comerciais e fórmulas manipuladas;
@@ -12,7 +12,7 @@ Com um simples setup, o médico tem acesso a:
 
 ## Como integrar
 
-- Escolha um campo de texto (\<input>, \<textarea> ou \<div contenteditable="true">) e adicione a classe "memed-autocomplete".
+- Escolha um campo de texto (\<input>, \<textarea>) e adicione a classe "memed-autocomplete".
 
 ```html
 <textarea class="sua-classe outra-classe memed-autocomplete"></textarea>
