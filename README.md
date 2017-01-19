@@ -1,3 +1,5 @@
+![sinapse-banner_blue](https://cloud.githubusercontent.com/assets/21063429/22125511/17bfa262-de7b-11e6-91b3-e0f37d692b0b.png)
+
 # Memed Sinapse
 
 Memed Sinapse é um plugin 100% gratuito da Memed que transforma qualquer campo de texto (inputs, textarea) em uma intuitiva ferramenta de suporte a prescrição médica.
