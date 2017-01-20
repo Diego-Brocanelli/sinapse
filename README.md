@@ -1,4 +1,4 @@
-![sinapse-banner_blue](https://cloud.githubusercontent.com/assets/21063429/22125811/458f91a6-de7c-11e6-9492-740b0a7d6d4d.png)
+![sinapse-banner](https://cloud.githubusercontent.com/assets/21063429/22148579/0c5618b8-def6-11e6-8fb1-d49c9e39c969.png)
 
 # Memed Sinapse
 
