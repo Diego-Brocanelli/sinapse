@@ -28,7 +28,7 @@ Com um simples setup, o médico tem acesso a:
 
 Após adicionar o script, já será possível ver o Memed Sinapse em ação:
 
-![memed-sinapse-em-acao.gif](https://cloud.githubusercontent.com/assets/2197005/22080162/b344340e-dda5-11e6-841b-13486c61548c.gif)
+![sinapse_setup](https://cloud.githubusercontent.com/assets/21063429/22165942/94636a5e-df45-11e6-8f52-21cd7d242275.gif)
 
 Caso queira capturar os dados do medicamento inserido, você pode adicionar um callback javascript:
 
