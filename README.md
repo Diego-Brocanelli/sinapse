@@ -23,9 +23,9 @@ Com um simples setup, o médico tem acesso a:
 - Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário (profissional da saúde), eles serão utilizados para uma experiência mais personalizada.
 
 ```html
-<script type="text/javascript" src="https://memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" 
-data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" 
-data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
+<script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
+ data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900"
+ data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
 ```
 
 Após adicionar o script, já será possível ver o Memed Sinapse em ação:
