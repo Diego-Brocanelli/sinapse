@@ -20,15 +20,30 @@ Com um simples setup, o médico tem acesso a:
 <textarea class="sua-classe outra-classe memed-autocomplete"></textarea>
 ```
 
-- Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário, eles serão utilizados para uma experiência mais personalizada.
+- Adicione o script abaixo ao final do HTML (antes do **\</body>**), preenchendo os atributos "data-*" com os dados de seu usuário (profissional da saúde), eles serão utilizados para uma experiência mais personalizada.
 
 ```html
-<script type="text/javascript" src="https://memed.com.br/modulos/plataforma.sinapse/build/sinapse.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
+<script type="text/javascript" src="https://memed.com.br/modulos/plataforma.sinapse/build/sinapse.js" 
+data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" 
+data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
 ```
 
 Após adicionar o script, já será possível ver o Memed Sinapse em ação:
 
 ![sinapse_setup_2](https://cloud.githubusercontent.com/assets/21063429/22213858/dba8a7c4-e17c-11e6-9501-bc5afa2b2eb9.gif)
+
+Os usuários do seu prontuário não precisam estar cadastrados na Memed, mas para um uso mais personalizado, os dados deles devem ser enviados nos atributos do script. Veja abaixo uma descrição de cada atributo:
+
+```
+data-api-key [obrigatório] - Chave de acesso a API da Memed (será a mesma para todos os usuários)
+data-usuario [obrigatório] - ID do usuário (é um identificador único, pode ser um hash do ID verdadeiro, desde que seja somente números)
+data-cidade - Cidade do usuário
+data-nascimento - Data de nascimento do usuário (dd/mm/yyyy)
+data-especialidade - Especialidade do usuário
+data-estado - Estado do usuário
+data-sexo - Sexo do usuário (M ou F)
+data-profissao - Profissão do usuário
+```
 
 Caso queira capturar os dados do medicamento inserido, você pode adicionar um callback javascript:
 
