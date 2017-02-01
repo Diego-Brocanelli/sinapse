@@ -22,6 +22,12 @@
       overflow: auto !important;
     }
 
+    #components-container.loading {
+      background-image: url('//memed.com.br/resources/img/loader.gif');
+      background-repeat: no-repeat;
+      background-position: center; 
+    }
+
     #iframe-container {
       display: block !important;
       position: relative !important;
@@ -63,7 +69,7 @@
     <div class="group-title-container">
       <h3 class="h3">Passo 2 - Personalize os componentes</h3>
     </div>
-    <div class="components-container" id="components-container"></div>
+    <div class="components-container loading" id="components-container"></div>
     <div class="flex-row">
       <div class="column-left flex-column">
         <div class="w-form">
@@ -163,7 +169,11 @@
 
     $(function init() {
       dependenciesChecker.check(function check() {
+        var componentsContainer = document.getElementById('components-container');
+
         MdHub.command.send('plataforma.autocomplete', 'searchMedicamentos', 'vitamina');
+
+        componentsContainer.className = 'components-container';
       });
 
       $('#api_key').on('keyup change input', function() {
