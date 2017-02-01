@@ -25,8 +25,14 @@ Com um simples setup, o médico tem acesso a:
 ```html
 <script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
  data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900"
- data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"></script>
+ data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"></script>
 ```
+
+## Sinapse Builder
+
+Você também pode gerar o script através do nosso Sinapse Builder, que lhe ajuda a testar algumas configurações (ex: tamanho, cor, fonte). Acesse em [https://memeddev.github.io/sinapse/builder.html](https://memeddev.github.io/sinapse/builder.html).
+
+## Atributos obrigatórios e dados do usuário
 
 Após adicionar o script, já será possível ver o Memed Sinapse em ação:
 
@@ -43,6 +49,7 @@ data-especialidade - Especialidade do usuário
 data-estado - Estado do usuário
 data-sexo - Sexo do usuário (M ou F)
 data-profissao - Profissão do usuário
+data-width - Largura máxima do autocomplete, em pixels
 ```
 
 Caso queira capturar os dados do medicamento inserido, você pode adicionar um callback javascript:
