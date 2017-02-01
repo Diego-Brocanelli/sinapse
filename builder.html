@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sinapse Builder</title>
+  
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/sinapse-builder.webflow.css" rel="stylesheet" type="text/css">
+
+  <script src="js/modernizr.js" type="text/javascript"></script>
+  
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  <style type="text/css">
+
+    body {
+      overflow: auto !important;
+    }
+
+    #iframe-container {
+      display: block !important;
+      position: relative !important;
+    }
+
+    iframe[name="plataforma.autocomplete"] {
+      display: block !important;
+      position: relative !important;
+    }
+
+    iframe[name="plataforma.medicamento"] {
+      display: none !important;
+    }
+
+    #script {
+      height: 100px;  
+    }
+
+  </style>
+</head>
+
+<body class="body">
+  <div class="header">
+    <div class="w-container"><img src="images/Brand2x.png" width="178">
+    </div>
+  </div>
+
+  <div class="step-container w-container">
+    <div class="group-title-container">
+      <h3 class="h3">Passo 1 - Digite sua API Key</h3>
+    </div>
+    <div class="api-key-form-wrapper w-form">
+      <input class="inputs w-input" data-name="api_key" id="api_key" maxlength="256" name="api_key" placeholder="ex: 1231456448915648789789" type="text">
+    </div>
+  </div>
+
+  <div class="step-container w-container">
+    <div class="group-title-container">
+      <h3 class="h3">Passo 2 - Personalize os componentes</h3>
+    </div>
+    <div class="components-container" id="components-container"></div>
+    <div class="flex-row">
+      <div class="column-left flex-column">
+        <div class="w-form">
+          <div class="customize-title-conteiner">
+            <h5 class="h5">Largura do auto-complete</h5>
+          </div>
+          <input class="inputs w-input" data-name="largura" id="largura" maxlength="256" name="largura-5" placeholder="900" type="number" min="500" max="2000" value="900">
+        </div>
+      </div>
+      <div class="column-disabled flex-column">
+        <div class="w-form">
+          <div class="customize-title-conteiner">
+            <h5 class="h5">Cor (em breve)</h5>
+          </div>
+
+          <div class="color-input-wrapper">
+            <input class="color-input inputs w-input" data-name="Cor 2" id="Cor-2" maxlength="256" name="Cor-2" placeholder="#0A6FFF" type="text" disabled="disabled">
+          </div>
+        </div>
+      </div>
+      <div class="column-disabled column-right flex-column">
+        <div class="w-form">
+          <div class="customize-title-conteiner">
+            <h5 class="h5">Fonte (em breve)</h5>
+          </div>
+          <input class="customize-font inputs w-input" data-name="Font 2" id="font-2" maxlength="256" name="font-2" placeholder="Open Sans" type="text" disabled="disabled">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-container w-container">
+    <h3 class="h3">Passo 3 - Copie o script e insira no html do componente que deseja integrar</h3>
+    
+    <div class="script-form-wrapper w-form">
+      <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"&gt;&lt;/script&gt;</textarea>
+      
+      <div class="buttons-script-container"><button class="button primary w-button" id="copiar" data-clipboard-target="#script">Copiar Script</button></div>
+    </div>
+  </div>
+  
+  <div class="w-embed">
+    <style>
+      body { -webkit-font-smoothing: antialiased; }
+    </style>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+
+  <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
+  <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.utils/build/plataforma.utils.min.js"></script>
+
+  <script type="text/javascript">
+    var apiKey = 'SUA_API_KEY';
+    var clipboard = new Clipboard('#copiar');
+    var interval;
+    var width = 900;
+
+    clipboard.on('success', function(e) {
+      $('#copiar').html('✓ Copiado');
+
+      setTimeout(function copiarTimeout() {
+        $('#copiar').html('Copiar Script');
+      }, 2000);
+
+      e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+      alert('Ocorreu um erro ao copiar o script');
+    });
+
+    MdHub.init({
+      apiKey: 'YvwM4rPAlxaxWaFKCffgLCZntOfTArsB4zabHzCntzEpQPLzM3jkPFNTtWjslYpN',
+      container: 'components-container',
+      modules: [
+      'plataforma.sdk',
+      'plataforma.autocomplete',
+      ],
+      require: [
+      'plataforma.sdk',
+      'plataforma.autocomplete',
+      'plataforma.medicamento',
+      ],
+      usuario: 123,
+    });
+
+    function updateCode() {
+      var code = document.getElementById('script');
+      var defaultCode = '&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="%api-key%" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="%width%"&gt;&lt;/script&gt;'
+
+      code.innerHTML = defaultCode
+      .replace('%api-key%', apiKey)
+      .replace('%width%', width);
+    }
+
+    $(function init() {
+      dependenciesChecker.check(function check() {
+        MdHub.command.send('plataforma.autocomplete', 'searchMedicamentos', 'vitamina');
+      });
+
+      $('#api_key').on('keyup change input', function() {
+        apiKey = $(this).val();
+        updateCode();
+      });
+
+      $('#largura').on('keyup change input', function() {
+        width = $(this).val();
+        $('iframe[name="plataforma.autocomplete"]').width(width);
+        updateCode();
+      });
+    });
+  </script>
+</body>
+</html>
