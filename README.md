@@ -148,6 +148,27 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -
 - [Exemplo PHP](exemplos/envio-prescricao/php/medicamentos-separados.php)
 - [Exemplo Java](exemplos/envio-prescricao/java/src/br/com/memed/MedicamentosSeparados.java)
 
-## Creditos
+## Utilizar somente o Memed Síntese
+
+Caso não queira utilizar o Autocomplete, mas somente o Memed Síntese (painel com detalhes sobre o medicamento), basta adicionar o script na página com o atributo `data-modulos="sintese"`, como abaixo:
+
+```html
+<script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
+ data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900"
+ data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"
+ data-modulos="sintese"></script>
+```
+
+Para abrir o Memed Síntese, execute o código Javascript abaixo, trocando `id_do_medicamento` por um ID obtido através de nossa [API](http://integracao.api.memed.com.br/doc/parceiros).
+
+```javascript
+MdSinapse.command.send('plataforma.medicamento', 'verMedicamento', {
+    id: 'id_do_medicamento'
+});
+```
+
+
+
+## Créditos
 
 :heart: Memed SA ([memed.com.br](https://memed.com.br))
