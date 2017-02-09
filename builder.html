@@ -197,18 +197,25 @@
       });
 
       $('input[name=input-medida]').on('keyup change', function() {
+        var widthField = $('#largura');
+
         if ($(this).val() === 'px') {
-          $('#largura')
+          widthField.data('last-percent', widthField.val());
+
+          widthField
             .attr('min', 500)
             .attr('max', 2000)
-            .val(900);
+            .val(widthField.data('last-px') || 900);
         } else {
-          $('#largura')
-            .attr('min', 10)
+          widthField.data('last-px', widthField.val());
+
+          widthField
+            .attr('min', 30)
             .attr('max', 100)
-            .val(100);
+            .val(widthField.data('last-percent') || 100);
         }
-        $('#largura').trigger('change');
+
+        widthField.trigger('change');
       });
     });
   </script>
