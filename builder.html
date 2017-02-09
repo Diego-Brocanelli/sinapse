@@ -2,18 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  
+
   <title>Sinapse Builder</title>
-  
+
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  
+
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/sinapse-builder.webflow.css" rel="stylesheet" type="text/css">
 
   <script src="js/modernizr.js" type="text/javascript"></script>
-  
+
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
   <style type="text/css">
@@ -25,12 +25,13 @@
     #components-container.loading {
       background-image: url('//memed.com.br/resources/img/loader.gif');
       background-repeat: no-repeat;
-      background-position: center; 
+      background-position: center;
     }
 
     #iframe-container {
       display: block !important;
       position: relative !important;
+      width: 100%;
     }
 
     iframe[name="plataforma.autocomplete"] {
@@ -43,7 +44,7 @@
     }
 
     #script {
-      height: 100px;  
+      height: 100px;
     }
 
   </style>
@@ -77,6 +78,14 @@
             <h5 class="h5">Largura do auto-complete</h5>
           </div>
           <input class="inputs w-input" data-name="largura" id="largura" maxlength="256" name="largura-5" placeholder="900" type="number" min="500" max="2000" value="900">
+          <label for="input-size-pixel">
+            <input type="radio" id="input-size-pixel" name="input-medida" value="px" checked="checked">
+            Pixel (px)
+          </label>
+          <label for="input-size-porcentagem">
+            <input type="radio" id="input-size-porcentagem" name="input-medida" value="%">
+            Porcentagem (%)
+          </label>
         </div>
       </div>
       <div class="column-disabled flex-column">
@@ -103,14 +112,14 @@
 
   <div class="step-container w-container">
     <h3 class="h3">Passo 3 - Copie o script e insira no html do componente que deseja integrar</h3>
-    
+
     <div class="script-form-wrapper w-form">
       <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"&gt;&lt;/script&gt;</textarea>
-      
+
       <div class="buttons-script-container"><button class="button primary w-button" id="copiar" data-clipboard-target="#script">Copiar Script</button></div>
     </div>
   </div>
-  
+
   <div class="w-embed">
     <style>
       body { -webkit-font-smoothing: antialiased; }
@@ -181,10 +190,25 @@
         updateCode();
       });
 
-      $('#largura').on('keyup change input', function() {
-        width = $(this).val();
+      $('#largura, input[name=input-medida]').on('keyup change input', function() {
+        width = $('#largura').val() + $('input[name=input-medida]:checked').val();
         $('iframe[name="plataforma.autocomplete"]').width(width);
         updateCode();
+      });
+
+      $('input[name=input-medida]').on('keyup change', function() {
+        if ($(this).val() === 'px') {
+          $('#largura')
+            .attr('min', 500)
+            .attr('max', 2000)
+            .val(900);
+        } else {
+          $('#largura')
+            .attr('min', 10)
+            .attr('max', 100)
+            .val(100);
+        }
+        $('#largura').trigger('change');
       });
     });
   </script>
