@@ -47,6 +47,10 @@
       height: 100px;
     }
 
+    #iframe-container iframe {
+      margin: auto;
+    }
+
   </style>
 </head>
 
@@ -88,23 +92,31 @@
           </label>
         </div>
       </div>
-      <div class="column-disabled flex-column">
+      <div class="flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
             <h5 class="h5">Cor (em breve)</h5>
           </div>
 
           <div class="color-input-wrapper">
-            <input class="color-input inputs w-input" data-name="Cor 2" id="Cor-2" maxlength="256" name="Cor-2" placeholder="#0A6FFF" type="text" disabled="disabled">
+            <input class="color-input inputs w-input" data-name="color" id="color" maxlength="256" name="color" placeholder="#0A6FFF" type="text" maxlength="7">
           </div>
         </div>
       </div>
-      <div class="column-disabled column-right flex-column">
+      <div class="column-right flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
             <h5 class="h5">Fonte (em breve)</h5>
           </div>
-          <input class="customize-font inputs w-input" data-name="Font 2" id="font-2" maxlength="256" name="font-2" placeholder="Open Sans" type="text" disabled="disabled">
+          <select id="fonte" name="fonte" class="inputs w-input">
+            <option value="">System Default</option>
+            <option value="Helvetica, Arial">Helvetica, Arial</option>
+            <option value="Open Sans" selected="selected">Open Sans</option>
+            <option value="Nunito">Nunito</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Lato">Lato</option>
+            <option value="Verdana">Verdana</option>
+          </select>
         </div>
       </div>
     </div>
@@ -114,7 +126,8 @@
     <h3 class="h3">Passo 3 - Copie o script e insira no html do componente que deseja integrar</h3>
 
     <div class="script-form-wrapper w-form">
-      <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"&gt;&lt;/script&gt;</textarea>
+      <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">
+      &lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900" data-font="Open Sans" data-color="#0A6FFF"&gt;&lt;/script&gt;</textarea>
 
       <div class="buttons-script-container"><button class="button primary w-button" id="copiar" data-clipboard-target="#script">Copiar Script</button></div>
     </div>
@@ -129,7 +142,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
-  <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
+  <!--script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script-->
+  <script type="text/javascript" src="//local.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
   <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.utils/build/plataforma.utils.min.js"></script>
 
   <script type="text/javascript">
@@ -137,6 +151,8 @@
     var clipboard = new Clipboard('#copiar');
     var interval;
     var width = 900;
+    var font = 'Open Sans';
+    var color = '#0A6FFF';
 
     clipboard.on('success', function(e) {
       $('#copiar').html('✓ Copiado');
@@ -169,11 +185,13 @@
 
     function updateCode() {
       var code = document.getElementById('script');
-      var defaultCode = '&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="%api-key%" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="%width%"&gt;&lt;/script&gt;'
+      var defaultCode = '&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="%api-key%" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="%width%" data-font="%font%" data-color="%color%"&gt;&lt;/script&gt;'
 
       code.innerHTML = defaultCode
       .replace('%api-key%', apiKey)
-      .replace('%width%', width);
+      .replace('%width%', width)
+      .replace('%font%', font)
+      .replace('%color%', color);
     }
 
     $(function init() {
@@ -193,6 +211,20 @@
       $('#largura, input[name=input-medida]').on('keyup change input', function() {
         width = $('#largura').val() + $('input[name=input-medida]:checked').val();
         $('iframe[name="plataforma.autocomplete"]').width(width);
+        updateCode();
+      });
+
+      $('#fonte').on('keyup change input', function() {
+        font = $(this).val();
+
+        MdHub.command.send('plataforma.autocomplete', 'updateFont', font);
+        updateCode();
+      });
+
+      $('#color').on('keyup change input', function() {
+        color = $(this).val();
+
+        MdHub.command.send('plataforma.autocomplete', 'updateColor', color);
         updateCode();
       });
 
