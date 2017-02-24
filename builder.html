@@ -15,6 +15,7 @@
   <script src="js/modernizr.js" type="text/javascript"></script>
 
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="css/farbtastic.css" type="text/css" />
 
   <style type="text/css">
 
@@ -51,6 +52,74 @@
       margin: auto;
     }
 
+    .farbtastic {
+      margin: auto;
+    }
+
+    .tutorial-container {
+      padding: 50px 0 0;
+    }
+
+    .tutorial-container button {
+      border:none;
+      width: 460px;
+      background-size: 100%;
+      background-color: transparent;
+      height: 102px;
+      outline: none;
+    }
+
+    .tutorial-container button:first-child {
+      margin-right: 8px;
+    }
+
+    .tutorial-container button:last-child {
+      margin-left: 8px;
+    }
+
+    #tutorial1 {
+      background-image: url(images/tutorial_1.png);
+    }
+
+    #tutorial2 {
+      background-image: url(images/tutorial_2.png);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2147483638;
+      background-color: rgba(0,0,0, .5);
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .modal iframe {
+      width: 838px;
+      height: 525px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: -webkit-translate(-50%, -50%);
+      border: none;
+    }
+
+    .modal:after {
+      content: 'x';
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      color: #FFF;
+      font-size: 30px;
+    }
+
+    .modal-open {
+      overflow: hidden !important;
+    }
+
   </style>
 </head>
 
@@ -59,6 +128,11 @@
     <div class="w-container"><img src="images/Brand2x.png" width="178">
     <iframe src="https://ghbtns.com/github-btn.html?user=memeddev&repo=sinapse&type=star&count=false&size=large" frameborder="0" scrolling="0" width="80" height="30" style="float: right;"></iframe>
     </div>
+  </div>
+
+  <div class="tutorial-container w-container">
+    <button type="button" id="tutorial1" data-video="https://www.youtube.com/embed/SPoEiUjf1lM?ecver=2" class="tutorial"></button>
+    <button type="button" id="tutorial2" data-video="" class="tutorial"></button>
   </div>
 
   <div class="step-container w-container">
@@ -95,18 +169,19 @@
       <div class="flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
-            <h5 class="h5">Cor (em breve)</h5>
+            <h5 class="h5">Cor</h5>
           </div>
 
           <div class="color-input-wrapper">
-            <input class="color-input inputs w-input" data-name="color" id="color" maxlength="256" name="color" placeholder="#0A6FFF" type="text" maxlength="7">
+            <input class="color-input inputs w-input no-alpha" data-name="color" id="color" name="color" placeholder="#20afd6" type="text" maxlength="7" value="#20afd6">
           </div>
+          <div id="color-picker"></div>
         </div>
       </div>
       <div class="column-right flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
-            <h5 class="h5">Fonte (em breve)</h5>
+            <h5 class="h5">Fonte</h5>
           </div>
           <select id="fonte" name="fonte" class="inputs w-input">
             <option value="">System Default</option>
@@ -146,6 +221,7 @@
   <!--script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script-->
   <script type="text/javascript" src="//local.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
   <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.utils/build/plataforma.utils.min.js"></script>
+  <script type="text/javascript" src="js/farbtastic.js"></script>
 
   <script type="text/javascript">
     var apiKey = 'SUA_API_KEY';
@@ -249,6 +325,35 @@
         }
 
         widthField.trigger('change');
+      });
+
+      $.farbtastic('#color-picker', function callback(color) {
+
+      }).linkTo('#color');
+
+      $('#color-picker').click(function click() {
+        $('#color').trigger('change');
+      });
+
+      $('#color').trigger('change');
+
+      $('.tutorial').on('click', function click() {
+        var link = $(this).data('video');
+        var height = $(window).innerHeight();
+
+        $('body').addClass('modal-open')
+        .append('<div class="modal"><iframe src="' + link + '"></iframe></div>');
+
+        $('.modal').css({
+          height: height,
+        }).fadeIn();
+      });
+
+      $('body').on('click', '.modal', function click() {
+        $('.modal').fadeOut(300, function fadeOut() {
+          $(this).remove();
+          $('body').removeClass('modal-open');
+        })
       });
     });
   </script>
