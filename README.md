@@ -28,6 +28,30 @@ Com um simples setup, o médico tem acesso a:
  data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900"
  data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"></script>
 ```
+### Single page Applications (Angular, Ember, Vue...)
+
+Caso você não possua os dados do usuário no momento da geração do HTML, você pode definí-los posteriormente via Javascript. Para isso, adicione o atributo `data-init="manual"` ao script, como mostrado abaixo:
+
+```html
+<script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
+ data-api-key="SUA_API_KEY" data-width="900" data-init="manual"></script>
+```
+
+E então, no seu javascript, após o login do usuário, inicialize o Sinapse com os dados dele:
+
+```javascript
+MdSinapse.init({
+	cidade: 'São Paulo',
+	nascimento: '30/12/1900',
+	especialidade: 'Dermatologia',
+	estado: 'SP',
+	sexo: 'M',
+	profissao: 'Médico',
+    usuario: 1234
+});
+```
+
+Obs: Caso o usuário faça logout, basta chamar novamente a função `MdSinapse.init` para redefinir os dados do novo usuário logado.
 
 ## Sinapse Builder
 
