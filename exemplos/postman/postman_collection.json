@@ -1,0 +1,120 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Parceiros Memed",
+		"_postman_id": "40ef1d71-d100-0f8f-4192-1af6638c64c8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Nova Prescrição - Texto Puro",
+			"request": {
+				"url": "https://api.memed.com.br/v1/prescricoes?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"type\": \"prescricoes\",\n    \"attributes\": {\n      \"texto\": \"Nome: João da Silva\\n\\nRoacutan 20mg, Cápsula (30un) Roche\\nTomar 2x ao dia\\n\\nVitamina C, comprimido (100un) Sundown Vitaminas\\nTomar 1x por semana\",\n      \"usuario\": {\n        \"id\": \"1234\",\n        \"cidade\": \"São Paulo\",\n        \"data_nascimento\": \"30/12/1900\",\n        \"especialidade\": \"Dermatologia\",\n        \"estado\": \"SP\",\n        \"sexo\": \"F\",\n        \"profissao\": \"Médico\"\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Nova Prescrição - Medicamentos Separados",
+			"request": {
+				"url": "https://api.memed.com.br/v1/prescricoes?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"type\": \"prescricoes\",\n    \"attributes\": {\n      \"medicamentos\": [\n        {\n          \"id\": \"a123123123\",\n          \"posologia\": \"Tomar 2x ao dia\",\n          \"quantidade\": \"2\"\n        },\n        {\n          \"nome\": \"Vitamina C, comprimido (100un) Sundown\",\n          \"posologia\": \"Tomar 1x ao dia\",\n          \"quantidade\": \"1\"\n        }\n      ],\n      \"usuario\": {\n        \"id\": \"1234\",\n        \"cidade\": \"São Paulo\",\n        \"data_nascimento\": \"30/12/1900\",\n        \"especialidade\": \"Dermatologia\",\n        \"estado\": \"SP\",\n        \"sexo\": \"F\",\n        \"profissao\": \"Médico\"\n      }\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Novo Usuário",
+			"request": {
+				"url": "https://api.memed.com.br/v1/usuarios?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"data\": {\n\t\t\"type\": \"usuarios\",\n\t\t\"attributes\": {\n\t\t\t\"cidade\": \"São Paulo\",\n\t\t\t\"data_nascimento\": \"30/12/1900\",\n\t\t\t\"especialidade\": \"Dermatologia\",\n\t\t\t\"estado\": \"SP\",\n\t\t\t\"sexo\": \"M\",\n\t\t\t\"profissao\": \"Médico\"\n\t\t},\n\t\t\"id\": \"123456\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Busca de Apresentações",
+			"request": {
+				"url": "https://api.memed.com.br/v1/apresentacoes?filter[categoria]=industrializados&filter[q]=roacutan&api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Apresentação",
+			"request": {
+				"url": "https://api.memed.com.br/v1/apresentacoes/ID_DO_MEDICAMENTO?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
