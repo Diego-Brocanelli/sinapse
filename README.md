@@ -104,6 +104,7 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -
 ' "https://api.memed.com.br/v1/prescricoes?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY"
 ```
 
+- [Exemplo Postman](exemplos/postman/postman_collection.json)
 - [Exemplo PHP](exemplos/envio-prescricao/php/texto-puro.php)
 - [Exemplo Java](exemplos/envio-prescricao/java/src/br/com/memed/TextoPuro.java)
 
@@ -146,6 +147,7 @@ curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -
 ' "https://api.memed.com.br/v1/prescricoes?api-key=SUA_API_KEY&secret-key=SUA_SECRET_KEY"
 ```
 
+- [Exemplo Postman](exemplos/postman/postman_collection.json)
 - [Exemplo PHP](exemplos/envio-prescricao/php/medicamentos-separados.php)
 - [Exemplo Java](exemplos/envio-prescricao/java/src/br/com/memed/MedicamentosSeparados.java)
 
