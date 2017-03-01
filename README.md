@@ -25,7 +25,8 @@ Com um simples setup, o médico tem acesso a:
 ```html
 <script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
  data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900"
- data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"></script>
+ data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"
+ data-width="900" data-font="Open Sans" data-color="#0A6FFF"></script>
 ```
 ### Single page Applications (Angular, Ember, Vue...)
 
@@ -33,7 +34,8 @@ Caso você não possua os dados do usuário no momento da geração do HTML, voc
 
 ```html
 <script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js"
- data-api-key="SUA_API_KEY" data-width="900" data-init="manual"></script>
+ data-api-key="SUA_API_KEY" data-width="900" data-font="Open Sans" data-color="#0A6FFF"
+ data-init="manual"></script>
 ```
 
 E então, no seu javascript, após o login do usuário, inicialize o Sinapse com os dados dele:
@@ -68,6 +70,8 @@ Os usuários do seu prontuário não precisam estar cadastrados na Memed, mas pa
 
 ```
 data-api-key [obrigatório] - Chave de acesso a API da Memed (será a mesma para todos os usuários)
+
+Atributos do usuário do prontuário:
 data-usuario [obrigatório] - ID do usuário (é um identificador único, pode ser um hash do ID verdadeiro, desde que seja somente números)
 data-cidade - Cidade do usuário
 data-nascimento - Data de nascimento do usuário (dd/mm/yyyy)
@@ -75,6 +79,10 @@ data-especialidade - Especialidade do usuário
 data-estado - Estado do usuário
 data-sexo - Sexo do usuário (M ou F)
 data-profissao - Profissão do usuário
+
+Atributos de estilo:
+data-color - Cor da fonte do autocomplete (hexadecimal, ex: "#20afd6")
+data-font - Família da fonte do autocomplete (opções: "Arial, Helvetica", "Lato", "Nunito", "Open Sans", "Proxima Nova", "Roboto", "Verdana")
 data-width - Largura máxima do autocomplete, em pixels
 ```
 
