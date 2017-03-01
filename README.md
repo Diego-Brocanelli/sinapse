@@ -56,7 +56,7 @@ Obs: Caso o usuário faça logout, basta chamar novamente a função `MdSinapse.
 
 ## Sinapse Builder
 
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/2197005/23463496/7c1e6e90-fe70-11e6-84d8-5a815c6b7890.png" alt="Memed Sinapse Builder Logo" /></p>
+<p align="center"><a href="https://memeddev.github.io/sinapse/builder.html" target="_blank"><img src="https://cloud.githubusercontent.com/assets/2197005/23463496/7c1e6e90-fe70-11e6-84d8-5a815c6b7890.png" alt="Memed Sinapse Builder Logo" /></a></p>
 
 Você também pode gerar o script através do nosso Sinapse Builder, que lhe ajuda a testar algumas configurações (ex: tamanho, cor, fonte). Acesse em [https://memeddev.github.io/sinapse/builder.html](https://memeddev.github.io/sinapse/builder.html).
 
