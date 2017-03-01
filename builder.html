@@ -15,6 +15,7 @@
   <script src="js/modernizr.js" type="text/javascript"></script>
 
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="css/farbtastic.css" type="text/css" />
 
   <style type="text/css">
 
@@ -47,6 +48,78 @@
       height: 100px;
     }
 
+    #iframe-container iframe {
+      margin: auto;
+    }
+
+    .farbtastic {
+      margin: auto;
+    }
+
+    .tutorial-container {
+      padding: 50px 0 0;
+    }
+
+    .tutorial-container button {
+      border:none;
+      width: 460px;
+      background-size: 100%;
+      background-color: transparent;
+      height: 102px;
+      outline: none;
+    }
+
+    .tutorial-container button:first-child {
+      margin-right: 8px;
+    }
+
+    .tutorial-container button:last-child {
+      margin-left: 8px;
+    }
+
+    #tutorial1 {
+      background-image: url(images/tutorial_1.png);
+    }
+
+    #tutorial2 {
+      background-image: url(images/tutorial_2.png);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2147483638;
+      background-color: rgba(0,0,0, .6);
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .modal iframe {
+      width: 838px;
+      height: 525px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: -webkit-translate(-50%, -50%);
+      border: none;
+    }
+
+    .modal:after {
+      content: 'x';
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      color: #FFF;
+      font-size: 30px;
+    }
+
+    .modal-open {
+      overflow: hidden !important;
+    }
+
   </style>
 </head>
 
@@ -55,6 +128,11 @@
     <div class="w-container"><img src="images/Brand2x.png" width="178">
     <iframe src="https://ghbtns.com/github-btn.html?user=memeddev&repo=sinapse&type=star&count=false&size=large" frameborder="0" scrolling="0" width="80" height="30" style="float: right;"></iframe>
     </div>
+  </div>
+
+  <div class="tutorial-container w-container">
+    <button type="button" id="tutorial1" data-video="https://www.youtube.com/embed/SPoEiUjf1lM?ecver=2" class="tutorial"></button>
+    <button type="button" id="tutorial2" data-video="https://www.youtube.com/embed/sTbAQsy5Sbc?ecver=2" class="tutorial"></button>
   </div>
 
   <div class="step-container w-container">
@@ -88,23 +166,33 @@
           </label>
         </div>
       </div>
-      <div class="column-disabled flex-column">
+      <div class="flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
-            <h5 class="h5">Cor (em breve)</h5>
+            <h5 class="h5">Cor</h5>
           </div>
 
           <div class="color-input-wrapper">
-            <input class="color-input inputs w-input" data-name="Cor 2" id="Cor-2" maxlength="256" name="Cor-2" placeholder="#0A6FFF" type="text" disabled="disabled">
+            <input class="color-input inputs w-input no-alpha" data-name="color" id="color" name="color" placeholder="#20afd6" type="text" maxlength="7" value="#20afd6">
           </div>
+          <div id="color-picker"></div>
         </div>
       </div>
-      <div class="column-disabled column-right flex-column">
+      <div class="column-right flex-column">
         <div class="w-form">
           <div class="customize-title-conteiner">
-            <h5 class="h5">Fonte (em breve)</h5>
+            <h5 class="h5">Fonte</h5>
           </div>
-          <input class="customize-font inputs w-input" data-name="Font 2" id="font-2" maxlength="256" name="font-2" placeholder="Open Sans" type="text" disabled="disabled">
+          <select id="fonte" name="fonte" class="inputs w-input">
+            <option value="">System Default</option>
+            <option value="Arial, Helvetica">Arial, Helvetica</option>
+            <option value="Lato">Lato</option>
+            <option value="Nunito">Nunito</option>
+            <option value="Open Sans" selected="selected">Open Sans</option>
+            <option value="Proxima Nova">Proxima Nova</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Verdana">Verdana</option>
+          </select>
         </div>
       </div>
     </div>
@@ -114,7 +202,8 @@
     <h3 class="h3">Passo 3 - Copie o script e insira no html do componente que deseja integrar</h3>
 
     <div class="script-form-wrapper w-form">
-      <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900"&gt;&lt;/script&gt;</textarea>
+      <textarea class="textarea w-input" data-name="script" id="script" maxlength="5000" name="script" placeholder="Script">
+      &lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="SUA_API_KEY" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="900" data-font="Open Sans" data-color="#00B8D6"&gt;&lt;/script&gt;</textarea>
 
       <div class="buttons-script-container"><button class="button primary w-button" id="copiar" data-clipboard-target="#script">Copiar Script</button></div>
     </div>
@@ -129,14 +218,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 
-  <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
+  <!--script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script-->
+  <script type="text/javascript" src="//local.memed.com.br/modulos/plataforma.hub/build/plataforma.hub.min.js"></script>
   <script type="text/javascript" src="//integracao.memed.com.br/modulos/plataforma.utils/build/plataforma.utils.min.js"></script>
+  <script type="text/javascript" src="js/farbtastic.js"></script>
 
   <script type="text/javascript">
     var apiKey = 'SUA_API_KEY';
     var clipboard = new Clipboard('#copiar');
     var interval;
     var width = 900;
+    var font = 'Open Sans';
+    var color = '#00B8D6';
 
     clipboard.on('success', function(e) {
       $('#copiar').html('✓ Copiado');
@@ -169,11 +262,13 @@
 
     function updateCode() {
       var code = document.getElementById('script');
-      var defaultCode = '&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="%api-key%" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="%width%"&gt;&lt;/script&gt;'
+      var defaultCode = '&lt;script type="text/javascript" src="//memed.com.br/modulos/plataforma.sinapse/build/sinapse.min.js" data-api-key="%api-key%" data-usuario="123" data-cidade="São Paulo" data-nascimento="30/12/1900" data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico" data-width="%width%" data-font="%font%" data-color="%color%"&gt;&lt;/script&gt;'
 
       code.innerHTML = defaultCode
       .replace('%api-key%', apiKey)
-      .replace('%width%', width);
+      .replace('%width%', width)
+      .replace('%font%', font)
+      .replace('%color%', color);
     }
 
     $(function init() {
@@ -193,6 +288,20 @@
       $('#largura, input[name=input-medida]').on('keyup change input', function() {
         width = $('#largura').val() + $('input[name=input-medida]:checked').val();
         $('iframe[name="plataforma.autocomplete"]').width(width);
+        updateCode();
+      });
+
+      $('#fonte').on('keyup change input', function() {
+        font = $(this).val();
+
+        MdHub.command.send('plataforma.autocomplete', 'updateFont', font);
+        updateCode();
+      });
+
+      $('#color').on('keyup change input', function() {
+        color = $(this).val();
+
+        MdHub.command.send('plataforma.autocomplete', 'updateColor', color);
         updateCode();
       });
 
@@ -216,6 +325,35 @@
         }
 
         widthField.trigger('change');
+      });
+
+      $.farbtastic('#color-picker', function callback(color) {
+
+      }).linkTo('#color');
+
+      $('#color-picker').click(function click() {
+        $('#color').trigger('change');
+      });
+
+      $('#color').trigger('change');
+
+      $('.tutorial').on('click', function click() {
+        var link = $(this).data('video');
+        var height = $(window).innerHeight();
+
+        $('body').addClass('modal-open')
+        .append('<div class="modal"><iframe src="' + link + '"></iframe></div>');
+
+        $('.modal').css({
+          height: height,
+        }).fadeIn();
+      });
+
+      $('body').on('click', '.modal', function click() {
+        $('.modal').fadeOut(300, function fadeOut() {
+          $(this).remove();
+          $('body').removeClass('modal-open');
+        })
       });
     });
   </script>
