@@ -1,5 +1,4 @@
-![sinapse-banner_github 2x](https://cloud.githubusercontent.com/assets/21063429/22703426/4341209e-ed4b-11e6-9599-873af8e0b17c.png)
-
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/21063429/22703426/4341209e-ed4b-11e6-9599-873af8e0b17c.png" alt="Memed Sinapse Logo" /></p>
 
 # Memed Sinapse
 
@@ -54,6 +53,8 @@ MdSinapse.init({
 Obs: Caso o usuário faça logout, basta chamar novamente a função `MdSinapse.init` para redefinir os dados do novo usuário logado.
 
 ## Sinapse Builder
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/2197005/23463496/7c1e6e90-fe70-11e6-84d8-5a815c6b7890.png" alt="Memed Sinapse Builder Logo" /></p>
 
 Você também pode gerar o script através do nosso Sinapse Builder, que lhe ajuda a testar algumas configurações (ex: tamanho, cor, fonte). Acesse em [https://memeddev.github.io/sinapse/builder.html](https://memeddev.github.io/sinapse/builder.html).
 
