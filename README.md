@@ -203,6 +203,17 @@ MdSinapse.command.send('plataforma.medicamento', 'verMedicamento', {
 });
 ```
 
+## Mostrar somente algumas abas do autocomplete
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/2197005/23523445/b35bd000-ff65-11e6-8c6d-5c0c5264c8e3.png" alt="Memed Autocomplete com somente as abas Composições e Exames ativadas" /></p>
+
+Caso você necessite desativar algumas abas do autocomplete, basta adicionar o atributo `data-memed-categorias` ao seu campo (\<input>, \<textarea>, \<div>):
+
+```html
+<input type="text" class="sua-classe outra-classe memed-autocomplete" data-memed-categorias="composicoes,exames">
+```
+
+As categorias válidas são: [industrializados, manipulados, composicoes, exames]
 
 
 ## Créditos
