@@ -92,9 +92,12 @@ Caso queira capturar os dados do medicamento inserido, você pode adicionar um c
 MdSinapse.event.add('medicamentoAdicionado', function callback(medicamento) {
   // O objeto medicamento:
   // {
+  //    "alto_custo":false,
   //    "composicao":"Princípio Ativo 1 + Princípio Ativo 2",
+  //    "controle_especial":false,
   //    "descricao":"Ácido Ascórbico",
   //    "fabricante":"Sundown Vitaminas",
+  //    "forma_fisica":"Cápsula",
   //    "id":"a123123123",
   //    "nome":"Vitamina C, comprimido (100un)",
   //    "quantidade":1,
