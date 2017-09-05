@@ -28,6 +28,15 @@ Com um simples setup, o médico tem acesso a:
  data-especialidade="Dermatologia" data-estado="SP" data-sexo="M" data-profissao="Médico"
  data-width="900" data-font="Open Sans" data-color="#0A6FFF"></script>
 ```
+
+### Chaves de acesso
+
+A Memed disponibiliza duas chaves de acesso:
+
+- **API-KEY** - Chave pública, pode aparecer no front-end. Permite a aplicação acessar os serviços de busca e cadastro de usuário.
+- **SECRET-KEY** - Chave privada, deve ficar somente no back-end. Quando usada junto com a API-KEY, permite o envio de prescrições.
+
+
 ### Single page Applications (Angular, Ember, Vue...)
 
 Caso você não possua os dados do usuário no momento da geração do HTML, você pode definí-los posteriormente via Javascript. Para isso, adicione o atributo `data-init="manual"` ao script, como mostrado abaixo:
