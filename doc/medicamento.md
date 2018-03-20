@@ -48,7 +48,7 @@ Caso você não possua os dados do usuário no momento da geração do HTML, voc
 E então, no seu javascript, após o login do usuário, inicialize o Sinapse Medicamento com os dados dele:
 
 ```javascript
-MdSinapse Medicamento.init({
+MdSinapse.init({
 	cidade: 'São Paulo',
 	nascimento: '30/12/1900',
 	especialidade: 'Dermatologia',
@@ -59,7 +59,7 @@ MdSinapse Medicamento.init({
 });
 ```
 
-Obs: Caso o usuário faça logout, basta chamar novamente a função `MdSinapse Medicamento.init` para redefinir os dados do novo usuário logado.
+Obs: Caso o usuário faça logout, basta chamar novamente a função `MdSinapse.init` para redefinir os dados do novo usuário logado.
 
 ## Sinapse Medicamento Builder
 
@@ -96,7 +96,7 @@ data-width - Largura máxima do autocomplete, em pixels
 Caso queira capturar os dados do medicamento inserido, você pode adicionar um callback javascript:
 
 ```javascript
-MdSinapse Medicamento.event.add('medicamentoAdicionado', function callback(medicamento) {
+MdSinapse.event.add('medicamentoAdicionado', function callback(medicamento) {
   // O objeto medicamento:
   // {
   //    "alto_custo":false,
@@ -208,7 +208,7 @@ Caso não queira utilizar o Autocomplete, mas somente o Memed Síntese (painel c
 Para abrir o Memed Síntese, execute o código Javascript abaixo, trocando `id_do_medicamento` por um ID obtido através de nossa [API](http://integracao.api.memed.com.br/doc/parceiros).
 
 ```javascript
-MdSinapse Medicamento.command.send('plataforma.medicamento', 'verMedicamento', {
+MdSinapse.command.send('plataforma.medicamento', 'verMedicamento', {
     id: 'id_do_medicamento'
 });
 ```
