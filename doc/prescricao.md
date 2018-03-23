@@ -28,7 +28,7 @@ Para que o usuário (profissional da saúde com CRM) possa utilizar a prescriç�
 Exemplo do request usando cURL:
 ```curl
 curl -X POST \
-  'http://local.api.memed.com.br/v1/sinapse-prescricao/usuarios?api-key=API-KEY&secret-key=SECRET-KEY' \
+  'https://api.memed.com.br/v1/sinapse-prescricao/usuarios?api-key=API-KEY&secret-key=SECRET-KEY' \
   -H 'Accept: application/vnd.api+json' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
@@ -152,7 +152,7 @@ MdHub.event.add('prescricaoSalva', function prescricaoSalvaCallback(idPrescricao
 No back-end, para obter mais informações sobre a prescrição, basta enviar um request para a API da Memed, com o ID da prescrição e o token do usuário:
 
 ```bash
-curl -X GET 'http://local.api.memed.com.br/v1/prescricoes/AQUI_VAI_O_ID_DA_PRESCRICAO?token=AQUI_VAI_O_TOKEN_DO_USUARIO' -H 'accept: application/json'
+curl -X GET 'https://api.memed.com.br/v1/prescricoes/AQUI_VAI_O_ID_DA_PRESCRICAO?token=AQUI_VAI_O_TOKEN_DO_USUARIO' -H 'accept: application/json'
 ```
 
 A resposta será como a abaixo:
